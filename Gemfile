@@ -34,6 +34,15 @@ group :development, :test do
 end
 
 group :development do
+  # -------- Rubyのコード監視ツール rubocop導入 -----------
+  # 記述後
+  # bundle install
+  # touch .rubocop.yml を実行する
+  gem 'rubocop', require: false
+  # rubocop.yml記述後
+  # bundle exec rubocop で実行
+  # bundle exec rubocop -a で自動修正させることも可能
+  # ----------------------------------------------------
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
