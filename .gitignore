@@ -29,3 +29,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# 不要ファイルをGitで管理しない
+.Ds_Store
