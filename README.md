@@ -25,91 +25,56 @@ Things you may want to cover:
 # テーブル設計
 
 ## usersテーブル
-| Column   | Type   | Options     |
-| ---------|------- |-------------|
-| email    | string | null: false |
-| password | string | null: false |
+| Column      | Type       | Options     |
+| ------------|----------- |-------------|
+| email       | string     | null: false |
+| password    | string     | null: false |
+| nickname    | string     | null: false |
+| f_name      | string     | null: false |
+| l_name      | string     | null: false |
+| f_name_kana | string     | null: false |
+| l_name_kana | string     | null: false |
+| birthday    | date       | null: false |
+
 
 ### Association
-has_one :profile
 has_many :items
-
-## profileテーブル
-| Column      | Type       | Options                        |
-| ------------|----------- |--------------------------------|
-| nickname    | string     | null: false                    |
-| f_name      | string     | null: false                    |
-| l_name      | string     | null: false                    |
-| f_name_kana | string     | null: false                    |
-| l_name_kana | string     | null: false                    |
-| birthday    | date       | null: false                    |
-| user        | references | null: false, foreign_key: true |
-
-### Association
-belongs_to :user
 
 ## itemsテーブル
 | Column             | Type       | Options                        |
 | -------------------|----------- |--------------------------------|
 | name               | string     | null: false                    |
 | text               | text       | null: false                    |
+| category           | integer    | null: false                    |
+| condition          | integer    | null: false                    |
+| delivery_burden    | integer    | null: false                    |
+| area               | integer    | null: false                    |
+| delivery_time      | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
-has_one :item_profile
-has_one :bayer
+has_one :bayer_history
 
-## item_profileテーブル
-
-| Column          | Type       | Options                        |
-| ----------------|----------- |--------------------------------|
-| category        | string     | null: false                    |
-| condition       | string     | null: false                    |
-| delivery_burden | string     | null: false                    |
-| area            | string     | null: false                    |
-| delivery_time   | string     | null: false                    |
-| time            | references | null: false, foreign_key: true |
-
-### Association
-belongs_to :item
-
-## bayerテーブル
+## bayer_historyテーブル
 | Column   | Type       | Options                        |
 | ---------| ---------- |--------------------------------|
-| item     | references | null: false, foreign_key: true |
-| address  | string     |                                |
-| Card     | integer    |                                |
+| item_id  | references | null: false, foreign_key: true |
+| user_id  | integer    | null: false                    |
 
 ### Association
 belongs_to :item
+has_one :bayer_info
+## bayer_infoテーブル
+| Column         | Type         | Options                        |
+| ---------------| ------------ |--------------------------------|
+| item_id        | references   | null: false, foreign_key: true |
+| post_num       | integer      | null: false                    |
+| area_id        | integer      | null: false                    |
+| municipalities | string       | null: false                    |
+| address        | string       | null: false                    |
+| building_name  | string       |                                |
+| phone_num      | integer      | null: false                    |
 
-## categoryテーブル
-
-| Column | Type       | Options     |
-| ------ | ---------- |-------------|
-| name   | string     | null: false |
-
-## conditionテーブル
-
-| Column | Type       | Options     |
-| ------ | ---------- |-------------|
-| name   | string     | null: false |
-
-## delivery_burdenテーブル
-
-| Column | Type       | Options     |
-| ------ | ---------- |-------------|
-| name   | string     | null: false |
-
-## areaテーブル
-
-| Column | Type       | Options     |
-| ------ | ---------- |-------------|
-| name   | string     | null: false |
-
-## delivery_timeテーブル
-
-| Column | Type       | Options     |
-| ------ | ---------- |-------------|
-| name   | string     | null: false |
+### Association
+belongs_to :bayer_history
