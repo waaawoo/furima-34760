@@ -39,7 +39,7 @@ Things you may want to cover:
 
 ### Association
 has_many :items
-has_many :bayer_historys
+has_many :buyer_historys
 ## itemsテーブル
 | Column             | Type       | Options                        |
 | -------------------|----------- |--------------------------------|
@@ -55,7 +55,7 @@ has_many :bayer_historys
 
 ### Association
 belongs_to :user
-has_one :bayer_history
+has_one :buyer_history
 
 ## buyer_historyテーブル
 | Column  | Type       | Options                        |
@@ -66,11 +66,11 @@ has_one :bayer_history
 ### Association
 belongs_to :item
 belongs_to :user
-has_one :bayer_info
+has_one :buyer_info
 ## buyer_infoテーブル
 | Column         | Type         | Options                        |
 | ---------------| ------------ |--------------------------------|
-| item           | references   | null: false, foreign_key: true |
+| buyer_history  | references   | null: false, foreign_key: true |
 | post_num       | string       | null: false                    |
 | area_id        | integer      | null: false                    |
 | municipalities | string       | null: false                    |
@@ -79,4 +79,4 @@ has_one :bayer_info
 | phone_num      | string       | null: false                    |
 
 ### Association
-belongs_to :bayer_history
+belongs_to :buyer_history
