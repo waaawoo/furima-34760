@@ -57,7 +57,7 @@ has_many :buyer_historys
 belongs_to :user
 has_one :buyer_history
 
-## buyer_historyテーブル
+## buyer_historysテーブル
 | Column  | Type       | Options                        |
 | --------| ---------- |--------------------------------|
 | item    | references | null: false, foreign_key: true |
@@ -67,7 +67,7 @@ has_one :buyer_history
 belongs_to :item
 belongs_to :user
 has_one :buyer_info
-## buyer_infoテーブル
+## buyer_infosテーブル
 | Column         | Type         | Options                        |
 | ---------------| ------------ |--------------------------------|
 | buyer_history  | references   | null: false, foreign_key: true |
