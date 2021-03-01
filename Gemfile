@@ -31,10 +31,19 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # ****************** Rspec導入 ***************************
+  gem 'rspec-rails', '~> 4.0.0'
+  # bundle install実行
+  # Rspecをインストール rails g rspec:install 実行
+  # .rspecファイルに --format documentation を記述
+  # rails g rspec:model モデル名 を実行
+  # spec/models/作成されたファイルにテストを記載してく
+  # ********************************************************
 end
 
 group :development do
-  # -------- Rubyのコード監視ツール rubocop導入 -----------
+  # ******************** Rubyのコード監視ツール rubocop導入 ********************
   # 記述後
   # bundle install
   # touch .rubocop.yml を実行する
@@ -42,7 +51,7 @@ group :development do
   # rubocop.yml記述後
   # bundle exec rubocop で実行
   # bundle exec rubocop -a で自動修正させることも可能
-  # ----------------------------------------------------
+  # ***************************************************************************
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -75,3 +84,4 @@ gem 'devise'
 # ****************** bindingpry導入 ***************************
 gem 'pry-rails'
 # *********************************************************
+
