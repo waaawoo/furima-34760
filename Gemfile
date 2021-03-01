@@ -40,6 +40,13 @@ group :development, :test do
   # rails g rspec:model モデル名 を実行
   # spec/models/作成されたファイルにテストを記載してく
   # ********************************************************
+
+  # ****************** Rspec導入 ***************************
+  gem 'factory_bot_rails'
+  # bundel install実行
+  # rails g rspec:model モデル名 を実行
+  # spec/factories/モデル名を記載していく
+  # ********************************************************
 end
 
 group :development do
