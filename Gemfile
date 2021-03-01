@@ -39,14 +39,18 @@ group :development, :test do
   # .rspecファイルに --format documentation を記述
   # rails g rspec:model モデル名 を実行
   # spec/models/作成されたファイルにテストを記載してく
-  # ********************************************************
 
   # ****************** Rspec導入 ***************************
   gem 'factory_bot_rails'
   # bundel install実行
   # rails g rspec:model モデル名 を実行
   # spec/factories/モデル名を記載していく
+
+  # ****************** faker導入 ***************************
+  gem 'faker'
+  # bundle install
   # ********************************************************
+
 end
 
 group :development do
