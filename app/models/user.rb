@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # バリデーション
-  validates :nickname, presence: true
+  validates :name, presence: true
   validates :f_name, presence: true
   validates :l_name, presence: true
   validates :f_name_kana, presence: true
