@@ -69,4 +69,5 @@ gem 'devise'
 # その後rails g devise userを実行
 # マイグレーションファイルに記載しマイグレーションする
 # rails db:migrate
+# rails g devise:views で viewファイルを作成する
 # *********************************************************
