@@ -15,7 +15,7 @@ class User < ApplicationRecord
   # 全角カタカタ
   validates :f_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
   # 全角カタカタ
-  validates :f_name_kana, presence: true,  format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
+  validates :l_name_kana, presence: true,  format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
   # から判定
   validates :birthday, presence: true
 end
