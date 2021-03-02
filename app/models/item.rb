@@ -27,4 +27,6 @@ class Item < ApplicationRecord
   belongs_to :delivery_burden
   belongs_to :delivery_time
 
+  has_one_attached :image
+
 end
