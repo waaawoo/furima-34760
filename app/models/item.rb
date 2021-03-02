@@ -3,9 +3,9 @@ class Item < ApplicationRecord
   # バリデーション
   # から判定
   with_options presence: true do
-    validates :name
-    validates :text
-    validates :price
+    validates :name, length: { maximum: 40 }
+    validates :text, length: { maximum: 1000 }
+    validates :price, length: { in: 300..9999999 }
 
     with_options numericality: { other_than: 1 } do
       validates :area_id
