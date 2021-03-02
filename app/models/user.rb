@@ -23,4 +23,6 @@ class User < ApplicationRecord
     validates :birthday
   end
 
+  # アソシエーション
+  has_many :items
 end

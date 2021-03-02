@@ -11,4 +11,7 @@ class Item < ApplicationRecord
     validates :area_id
     validates :delivery_time_id
   end
+
+  # アソシエーション
+  belonsg_to :user
 end
