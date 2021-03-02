@@ -49,6 +49,4 @@ class Area < ActiveHash::Base
     {id: 47, name: "沖縄県"}
   ]
 
-  # アソシエーション
-  has_many :items
 end

@@ -5,7 +5,8 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name, length: { maximum: 40 }
     validates :text, length: { maximum: 1000 }
-    validates :price, length: { in: 300..9999999 }
+    validates :price, :numericality => { :greater_than_or_equal_to => 300 }
+    validates :price, :numericality => { :less_than => 10000000 }
 
     with_options numericality: { other_than: 1 } do
       validates :area_id
@@ -21,11 +22,12 @@ class Item < ApplicationRecord
 
  # アソシエーション
   belongs_to :user
-  belongs_to :area
-  belongs_to :category
-  belongs_to :condition
-  belongs_to :delivery_burden
-  belongs_to :delivery_time
+
+  belongs_to_active_hash :area
+  belongs_to_active_hash :category
+  belongs_to_active_hash :condition
+  # belongs_to_active_hash :delivery_burden
+  # belongs_to_active_hash :delivery_time
 
   has_one_attached :image
 
