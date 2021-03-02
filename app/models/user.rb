@@ -10,11 +10,16 @@ class User < ApplicationRecord
     validates :password, length:{minimum: 6},format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/}
     validates :name
     # 全角のみ
-    validates :f_name, format: {with: /\A[ぁ-んァ-ン一-龥々]+\z/}
-    validates :l_name, format: {with: /\A[ぁ-んァ-ン一-龥々]+\z/}
+    with_options format: {with: /\A[ぁ-んァ-ン一-龥々]+\z/} do
+      validates :f_name
+      validates :l_name
+    end
     # 全角カタカナのみ
-    validates :f_name_kana, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
-    validates :l_name_kana, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
+    with_options format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ } do
+      validates :f_name_kana
+      validates :l_name_kana
+    end
+
     validates :birthday
   end
 
