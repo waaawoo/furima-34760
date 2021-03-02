@@ -31,10 +31,30 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # ****************** Rspec導入 ***************************
+  gem 'rspec-rails', '~> 4.0.0'
+  # bundle install実行
+  # Rspecをインストール rails g rspec:install 実行
+  # .rspecファイルに --format documentation を記述
+  # rails g rspec:model モデル名 を実行
+  # spec/models/作成されたファイルにテストを記載してく
+
+  # ****************** Rspec導入 ***************************
+  gem 'factory_bot_rails'
+  # bundel install実行
+  # rails g rspec:model モデル名 を実行
+  # spec/factories/モデル名を記載していく
+
+  # ****************** faker導入 ***************************
+  gem 'faker'
+  # bundle install
+  # ********************************************************
+
 end
 
 group :development do
-  # -------- Rubyのコード監視ツール rubocop導入 -----------
+  # ******************** Rubyのコード監視ツール rubocop導入 ********************
   # 記述後
   # bundle install
   # touch .rubocop.yml を実行する
@@ -42,7 +62,7 @@ group :development do
   # rubocop.yml記述後
   # bundle exec rubocop で実行
   # bundle exec rubocop -a で自動修正させることも可能
-  # ----------------------------------------------------
+  # ***************************************************************************
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -61,3 +81,18 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# ****************** Devise導入 ***************************
+gem 'devise'
+# bundle install 実行
+# インストール後rails g devise:installを実行
+# その後rails g devise userを実行
+# マイグレーションファイルに記載しマイグレーションする
+# rails db:migrate
+# rails g devise:views で viewファイルを作成する
+# *********************************************************
+
+# ****************** bindingpry導入 ***************************
+gem 'pry-rails'
+# *********************************************************
+
