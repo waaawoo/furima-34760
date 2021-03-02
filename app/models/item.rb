@@ -14,4 +14,10 @@ class Item < ApplicationRecord
 
   # アソシエーション
   belonsg_to :user
+  belonsg_to :area
+  belonsg_to :category
+  belonsg_to :condition
+  belonsg_to :delivery_burden
+  belonsg_to :delivery_time
+
 end
