@@ -15,13 +15,14 @@ class Item < ApplicationRecord
       validates :delivery_time_id
     end
   end
-
+ # モジュールの取り込み
+ extend ActiveHash::Associations::ActiveRecordExtensions
   # アソシエーション
-  belonsg_to :user
-  belonsg_to :area
-  belonsg_to :category
-  belonsg_to :condition
-  belonsg_to :delivery_burden
-  belonsg_to :delivery_time
+  belongs_to :user
+  belongs_to :area
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :delivery_burden
+  belongs_to :delivery_time
 
 end
