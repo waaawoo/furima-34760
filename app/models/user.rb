@@ -4,18 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # バリデーション 6以上半角英数字混合必須
-  validates :password, length:{minimum: 6},format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/}
-  # から判定
-  validates :name, presence: true
-  # 全角のみ
-  validates :f_name, presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/}
-  # 全角のみ
-  validates :l_name, presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/}
-  # 全角カタカタ
-  validates :f_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
-  # 全角カタカタ
-  validates :l_name_kana, presence: true,  format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
-  # から判定
-  validates :birthday, presence: true
+  # 空判定
+  with_options presence: true do
+    # 6以上半角英数字混合必須
+    validates :password, length:{minimum: 6},format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/}
+    validates :name
+    # 全角のみ
+    validates :f_name, format: {with: /\A[ぁ-んァ-ン一-龥]/}
+    validates :l_name, format: {with: /\A[ぁ-んァ-ン一-龥]/}
+    # 全角カタカナのみ
+    validates :f_name_kana, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
+    validates :l_name_kana, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
+    validates :birthday
+  end
+
 end
