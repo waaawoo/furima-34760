@@ -98,3 +98,8 @@ gem 'pry-rails'
 
 # ****************** Active_hash導入 ***************************
 gem 'active_hash'
+
+# ****************** ActiveStorage導入 ***************************
+gem 'mini_magick'
+gem 'image_processing', "~> 1.2"
+# bundle install後（rails active_storage:install）->(rails db:migrate)を実行
