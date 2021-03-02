@@ -6,10 +6,14 @@ class Item < ApplicationRecord
     validates :name
     validates :text
     validates :price
-    validates :category_id
-    validates :delivery_burden_id
-    validates :area_id
-    validates :delivery_time_id
+
+    with_options numericality: { other_than: 1 } do
+      validates :area_id
+      validates :category_id
+      validates :condition_id
+      validates :delivery_burden_id
+      validates :delivery_time_id
+    end
   end
 
   # アソシエーション
