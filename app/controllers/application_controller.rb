@@ -10,12 +10,12 @@ class ApplicationController < ActionController::Base
       # 環境変数が指定される
       # vim ~/.zshrc
       # source ~/.zshrc
-      username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
+      username == ENV['BASIC_AUTH_USER'] && password == ENV['BASIC_AUTH_PASSWORD']
     end
   end
 
   # ユーザー登録の追加分を許可
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :f_name, :f_name_kana, :l_name, :l_name_kana, :birthday])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name f_name f_name_kana l_name l_name_kana birthday])
   end
 end
