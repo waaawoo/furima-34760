@@ -7,11 +7,11 @@ class User < ApplicationRecord
   # 空判定
   with_options presence: true do
     # 6以上半角英数字混合必須
-    validates :password, length:{minimum: 6},format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/}
-    # TODO 重複禁止
+    validates :password, length: { minimum: 6 }, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/ }
+    # TODO: 重複禁止
     validates :name
     # 全角のみ
-    with_options format: {with: /\A[ぁ-んァ-ン一-龥々]+\z/} do
+    with_options format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/ } do
       validates :f_name
       validates :l_name
     end

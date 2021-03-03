@@ -11,7 +11,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    # binding.pry
     if @item.save
       redirect_to root_path
     else
@@ -32,6 +31,6 @@ class ItemsController < ApplicationController
       :area_id,
       :delivery_time_id,
       :price
-      ).merge(user_id: current_user.id)
+    ).merge(user_id: current_user.id)
   end
 end
