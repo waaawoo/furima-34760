@@ -25,8 +25,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :area
   belongs_to_active_hash  :category
   belongs_to_active_hash  :condition
-  belongs_to_active_hash :DeliveryBurden
-  belongs_to_active_hash :DeliveryTime
+  belongs_to_active_hash :delivery_burden
+  belongs_to_active_hash :delivery_time
 
   has_one_attached :image
 end
