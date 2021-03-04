@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :exists_check, only: [:edit, :update]
+  before_action :exists_check, only: [:edit, :update, :show]
   before_action :user_check, only: [:edit, :update]
 
 
