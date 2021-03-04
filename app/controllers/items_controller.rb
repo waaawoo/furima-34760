@@ -19,24 +19,34 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-  end
-
-  def edit
-    @item = Item.find(params[:id])
-    if @item.user_id != current_user.id
+    if Item.exists?(id: params[:id])
+      @item = Item.find(params[:id])
+    else
       redirect_to root_path
     end
 
   end
 
-  def update
-    @item = Item.find(params[:id])
-    if @item.user_id == current_user.id
-      if @item.update(item_params)
+  def edit
+    if Item.exists?(id: params[:id])
+      @item = Item.find(params[:id])
+      if @item.user_id != current_user.id
         redirect_to root_path
-      else
-        render :edit
+      end
+    else
+      redirect_to root_path
+    end
+  end
+
+  def update
+    if Item.exists?(id: params[:id])
+      @item = Item.find(params[:id])
+      if @item.user_id == current_user.id
+        if @item.update(item_params)
+          redirect_to root_path
+        else
+          render :edit
+        end
       end
     else
       redirect_to root_path
