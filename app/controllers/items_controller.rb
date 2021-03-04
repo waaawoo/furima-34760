@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :exists_check, only: [:edit, :update, :show]
-  before_action :user_check, only: [:edit, :update]
   before_action :set_item, only: [:edit, :update, :show]
+  before_action :user_check, only: [:edit, :update]
+
 
 
   def index
@@ -52,14 +53,14 @@ class ItemsController < ApplicationController
     ).merge(user_id: current_user.id)
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
-
   def exists_check
     unless Item.exists?(id: params[:id])
       redirect_to root_path
     end
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
   def user_check
