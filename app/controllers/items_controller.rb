@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :exists_check, only: [:edit, :update]
+  before_action :user_check, only: [:edit, :update]
+
 
   def index
     @items = Item.order(created_at: :DESC)
@@ -19,37 +22,19 @@ class ItemsController < ApplicationController
   end
 
   def show
-    if Item.exists?(id: params[:id])
-      @item = Item.find(params[:id])
-    else
-      redirect_to root_path
-    end
-
+    @item = Item.find(params[:id])
   end
 
   def edit
-    if Item.exists?(id: params[:id])
-      @item = Item.find(params[:id])
-      if @item.user_id != current_user.id
-        redirect_to root_path
-      end
-    else
-      redirect_to root_path
-    end
+    @item = Item.find(params[:id])
   end
 
   def update
-    if Item.exists?(id: params[:id])
-      @item = Item.find(params[:id])
-      if @item.user_id == current_user.id
-        if @item.update(item_params)
-          redirect_to root_path
-        else
-          render :edit
-        end
-      end
-    else
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
       redirect_to root_path
+    else
+      render :edit
     end
   end
 
@@ -68,4 +53,22 @@ class ItemsController < ApplicationController
       :price
     ).merge(user_id: current_user.id)
   end
+
+  def exists_check
+    unless Item.exists?(id: params[:id])
+      redirect_to root_path
+    end
+  end
+
+  def user_check
+    item = Item.find(params[:id])
+    if user_signed_in?
+      if item.user_id != current_user.id
+        redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
+  end
+
 end
