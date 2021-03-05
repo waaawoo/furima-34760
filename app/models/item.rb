@@ -29,4 +29,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_time
 
   has_one_attached :image
+
+  has_many :buyer_historys
 end

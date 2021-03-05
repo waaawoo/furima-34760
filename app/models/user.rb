@@ -26,4 +26,5 @@ class User < ApplicationRecord
 
   # アソシエーション
   has_many :items
+  has_many :buyer_historys
 end
