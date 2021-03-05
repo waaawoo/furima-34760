@@ -1,0 +1,2 @@
+class BuyerHistory < ApplicationRecord
+end

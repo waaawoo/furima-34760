@@ -1,0 +1,2 @@
+class BuyerInfo < ApplicationRecord
+end

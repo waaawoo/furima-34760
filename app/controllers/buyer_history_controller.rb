@@ -1,0 +1,2 @@
+class BuyerHistoryController < ApplicationController
+end
