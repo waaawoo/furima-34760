@@ -8,15 +8,16 @@ class BuyerHistoryInfo
 
   # バリデーション
   with_options presence: true do
-    validates :post_num
+    # ハイフンが必要
+    validates :post_num, format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :area_id
     validates :municipalities
     validates :address
-    validates :phone_num
+    # 11桁いないんで数値のみ
+    validates :phone_num, format: { with: /\A\d{11}\z/}
     validates :item_id
     validates :user_id
     validates :token
-    # validates :buyer_histories_id
   end
 
   # 保存処理
