@@ -102,3 +102,6 @@ gem 'active_hash'
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
 # bundle install後（rails active_storage:install）->(rails db:migrate)を実行
+
+# ****************** payjp導入 ***************************
+gem 'payjp'
