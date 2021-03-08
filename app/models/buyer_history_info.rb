@@ -10,7 +10,7 @@ class BuyerHistoryInfo
   with_options presence: true do
     # ハイフンが必要
     validates :post_num, format: { with: /\A\d{3}[-]\d{4}\z/ }
-    validates :area_id
+    validates :area_id, numericality: { other_than: 1 }
     validates :municipalities
     validates :address
     # 11桁いないんで数値のみ
