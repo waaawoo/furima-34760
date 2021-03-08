@@ -8,6 +8,8 @@ class BuyerHistoryController < ApplicationController
   end
 
   def create
+    binding.pry
+
     @buyer_history_info = BuyerHistoryInfo.new(history_params)
     if @buyer_history_info.valid?
       @buyer_history_info.save
@@ -35,6 +37,13 @@ class BuyerHistoryController < ApplicationController
     ).merge(
       user_id: current_user.id,
       item_id: set_item.id,
+      token: params[:token]
       )
   end
+
+  # def pay_item
+  #   Payjp::Charge.create(
+  #     amount: item.price[:]
+  #   )
+  # end
 end
