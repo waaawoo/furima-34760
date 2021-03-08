@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_100620) do
+ActiveRecord::Schema.define(version: 2021_03_08_054618) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2021_03_05_100620) do
   end
 
   create_table "buyer_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "buyer_histories_id"
     t.string "post_num", null: false
     t.integer "area_id", null: false
     t.string "municipalities", null: false
@@ -52,7 +51,8 @@ ActiveRecord::Schema.define(version: 2021_03_05_100620) do
     t.string "phone_num", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["buyer_histories_id"], name: "index_buyer_infos_on_buyer_histories_id"
+    t.bigint "buyer_history_id"
+    t.index ["buyer_history_id"], name: "index_buyer_infos_on_buyer_history_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_03_05_100620) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "condition_id", null: false
+    t.integer "condition_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -91,6 +91,6 @@ ActiveRecord::Schema.define(version: 2021_03_05_100620) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "buyer_histories", "items"
   add_foreign_key "buyer_histories", "users"
-  add_foreign_key "buyer_infos", "buyer_histories", column: "buyer_histories_id"
+  add_foreign_key "buyer_infos", "buyer_histories"
   add_foreign_key "items", "users"
 end
