@@ -15,6 +15,7 @@ class BuyerHistoryInfo
     validates :phone_num
     validates :item_id
     validates :user_id
+    validates :token
     # validates :buyer_histories_id
   end
 
