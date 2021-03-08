@@ -8,10 +8,9 @@ class BuyerHistoryController < ApplicationController
   end
 
   def create
-    binding.pry
-
     @buyer_history_info = BuyerHistoryInfo.new(history_params)
     if @buyer_history_info.valid?
+      pay_item
       @buyer_history_info.save
       redirect_to root_path
     else
@@ -41,9 +40,12 @@ class BuyerHistoryController < ApplicationController
       )
   end
 
-  # def pay_item
-  #   Payjp::Charge.create(
-  #     amount: item.price[:]
-  #   )
-  # end
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: @buyer_history_info.token,
+      currency: 'jpy'
+    )
+  end
 end
