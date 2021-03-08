@@ -1,6 +1,7 @@
 class BuyerHistoryController < ApplicationController
   before_action :authenticate_user!, only: %i[index]
   before_action :set_item, only: %i[index]
+  before_action :user_check, only: [:index]
 
 
   def index
@@ -47,5 +48,15 @@ class BuyerHistoryController < ApplicationController
       card: @buyer_history_info.token,
       currency: 'jpy'
     )
+  end
+
+  def user_check
+    # 出品者NG
+    redirect_to root_path if @item.user_id == current_user.id
+    # 販売済みNG
+    unless @item.buyer_historys.blank?
+      redirect_to root_path
+    end
+
   end
 end

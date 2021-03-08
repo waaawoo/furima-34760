@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :exists_check, only: %i[edit update show destroy]
   before_action :set_item, only: %i[edit update show destroy]
   before_action :user_check, only: %i[edit update destroy]
+  before_action :item_check, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.order(created_at: :DESC)
@@ -64,5 +65,12 @@ class ItemsController < ApplicationController
 
   def user_check
     redirect_to root_path if @item.user_id != current_user.id
+  end
+
+  # 販売済みNG
+  def item_check
+    unless @item.buyer_historys.blank?
+      redirect_to root_path
+    end
   end
 end
