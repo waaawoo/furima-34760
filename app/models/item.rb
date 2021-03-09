@@ -30,5 +30,5 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
-  has_many :buyer_historys
+  has_one :buyer_history
 end

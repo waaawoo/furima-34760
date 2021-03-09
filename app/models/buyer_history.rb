@@ -1,5 +1,5 @@
 class BuyerHistory < ApplicationRecord
   belongs_to :item
   belongs_to :user
-  has_one :buyer_infos
+  has_one :buyer_info
 end
