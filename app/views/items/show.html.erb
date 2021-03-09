@@ -26,18 +26,14 @@
       </span>
     </div>
 
-    <% if user_signed_in?  %>
+    <% if user_signed_in? && @item.buyer_historys.blank? %>
       <% if current_user.id == @item.user.id %>
-        <% if @item.buyer_historys.blank? %>
-          <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
-          <p class="or-text">or</p>
-          <%= link_to "削除", item_path , method: :delete, class:"item-destroy" %>
-        <% end %>
+        <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", item_path , method: :delete, class:"item-destroy" %>
       <% else %>
         <%# 商品が売れていない場合表示 %>
-        <% if @item.buyer_historys.blank? %>
-          <%= link_to "購入画面に進む", item_buyer_history_index_path(@item.id) ,class:"item-red-btn"%>
-        <% end %>
+        <%= link_to "購入画面に進む", item_buyer_history_index_path(@item.id) ,class:"item-red-btn"%>
       <% end %>
     <% end %>
 
