@@ -4,7 +4,7 @@
           <%= image_tag items.image, class: "item-img" %>
 
           <%# 販売済み判定 %>
-          <% unless items.buyer_historys.blank? %>
+          <% unless items.buyer_history.blank? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>

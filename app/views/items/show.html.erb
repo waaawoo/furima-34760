@@ -10,7 +10,7 @@
       <%= image_tag @item.image ,class:"item-box-img" %>
 
       <%# 画像のSoud out判定 %>
-      <% unless @item.buyer_historys.blank? %>
+      <% unless @item.buyer_history.blank? %>
         <div class="sold-out">
           <span>Sold Out!!</span>
         </div>
@@ -26,7 +26,7 @@
       </span>
     </div>
 
-    <% if user_signed_in? && @item.buyer_historys.blank? %>
+    <% if user_signed_in? && @item.buyer_history.blank? %>
       <% if current_user.id == @item.user.id %>
         <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>

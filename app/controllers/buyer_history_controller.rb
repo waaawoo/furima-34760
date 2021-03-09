@@ -1,5 +1,5 @@
 class BuyerHistoryController < ApplicationController
-  before_action :authenticate_user!, only: %i[index]
+  before_action :authenticate_user!, only: %i[index create update destroy]
   before_action :set_item, only: %i[index create]
   before_action :user_check, only: [:index]
 
@@ -52,6 +52,6 @@ class BuyerHistoryController < ApplicationController
     # 出品者NG
     redirect_to root_path if @item.user_id == current_user.id
     # 販売済みNG
-    redirect_to root_path unless @item.buyer_historys.blank?
+    redirect_to root_path unless @item.buyer_history.blank?
   end
 end

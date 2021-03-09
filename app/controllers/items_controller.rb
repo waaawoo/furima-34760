@@ -69,6 +69,6 @@ class ItemsController < ApplicationController
 
   # 販売済みNG
   def item_check
-    redirect_to root_path unless @item.buyer_historys.blank?
+    redirect_to root_path unless @item.buyer_history.blank?
   end
 end
