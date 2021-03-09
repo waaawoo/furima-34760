@@ -4,6 +4,7 @@ FactoryBot.define do
     area_id           { 2 }
     municipalities    { 'う市' }
     address           { 'アドレス' }
+    builing_name      { '建物データ' }
     phone_num         { '12345678910' }
     token             { 'token' }
     user_id           { 1 }

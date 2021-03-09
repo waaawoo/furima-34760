@@ -11,6 +11,11 @@ RSpec.describe BuyerHistoryInfo, type: :model do
       expect(@buyItem).to be_valid
     end
 
+    it '建物データがなくても登録できる' do
+      @buyItem.builing_name = ""
+      expect(@buyItem).to be_valid
+    end
+
     # 異常系
     it 'トークン情報がないと登録できない' do
       @buyItem.token = ''
