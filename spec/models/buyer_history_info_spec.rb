@@ -86,6 +86,18 @@ RSpec.describe BuyerHistoryInfo, type: :model do
         @buyItem.valid?
         expect(@buyItem.errors.full_messages).to include('Phone num is invalid')
       end
+
+      it 'user_idがないと登録できない' do
+        @buyItem.user_id = nil
+        @buyItem.valid?
+        expect(@buyItem.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idがないと登録できない' do
+        @buyItem.item_id = nil
+        @buyItem.valid?
+        expect(@buyItem.errors.full_messages).to include("Item can't be blank")
+      end
     end
   end
 end
