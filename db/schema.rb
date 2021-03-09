@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_302_093_844) do
+ActiveRecord::Schema.define(version: 20_210_308_054_618) do
   create_table 'active_storage_attachments', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
     t.string 'name', null: false
     t.string 'record_type', null: false
@@ -31,6 +31,28 @@ ActiveRecord::Schema.define(version: 20_210_302_093_844) do
     t.string 'checksum', null: false
     t.datetime 'created_at', null: false
     t.index ['key'], name: 'index_active_storage_blobs_on_key', unique: true
+  end
+
+  create_table 'buyer_histories', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.bigint 'item_id'
+    t.bigint 'user_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['item_id'], name: 'index_buyer_histories_on_item_id'
+    t.index ['user_id'], name: 'index_buyer_histories_on_user_id'
+  end
+
+  create_table 'buyer_infos', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.string 'post_num', null: false
+    t.integer 'area_id', null: false
+    t.string 'municipalities', null: false
+    t.string 'address', null: false
+    t.string 'builing_name'
+    t.string 'phone_num', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.bigint 'buyer_history_id'
+    t.index ['buyer_history_id'], name: 'index_buyer_infos_on_buyer_history_id'
   end
 
   create_table 'items', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
@@ -67,5 +89,8 @@ ActiveRecord::Schema.define(version: 20_210_302_093_844) do
   end
 
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
+  add_foreign_key 'buyer_histories', 'items'
+  add_foreign_key 'buyer_histories', 'users'
+  add_foreign_key 'buyer_infos', 'buyer_histories'
   add_foreign_key 'items', 'users'
 end

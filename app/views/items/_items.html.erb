@@ -3,12 +3,11 @@
         <div class='item-img-content'>
           <%= image_tag items.image, class: "item-img" %>
 
-          <% if false %>
-          <%# 商品が売れていればsold outを表示しましょう %>
+          <%# 販売済み判定 %>
+          <% unless items.buyer_history.blank? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
-          <%# //商品が売れていればsold outを表示しましょう %>
           <% end %>
 
         </div>
