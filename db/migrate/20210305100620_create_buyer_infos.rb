@@ -7,7 +7,7 @@ class CreateBuyerInfos < ActiveRecord::Migration[6.0]
       t.string :municipalities, null: false
       t.string :address, null: false
       t.string :builing_name
-      t.string :phone_num, null:false
+      t.string :phone_num, null: false
       t.timestamps
     end
   end

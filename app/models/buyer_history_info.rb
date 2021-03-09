@@ -9,12 +9,12 @@ class BuyerHistoryInfo
   # バリデーション
   with_options presence: true do
     # ハイフンが必要
-    validates :post_num, format: { with: /\A\d{3}[-]\d{4}\z/ }
+    validates :post_num, format: { with: /\A\d{3}-\d{4}\z/ }
     validates :area_id, numericality: { other_than: 1 }
     validates :municipalities
     validates :address
     # 11桁いないんで数値のみ
-    validates :phone_num, format: { with: /\A\d{11}\z/}
+    validates :phone_num, format: { with: /\A\d{11}\z/ }
     validates :item_id
     validates :user_id
     validates :token
@@ -27,13 +27,13 @@ class BuyerHistoryInfo
     # infoテーブル
     BuyerInfo.create(
       # 外部キーとカラム名とモデルは同一名じゃないと紐づかない
-      buyer_history_id:  buyer_history.id,
-      post_num:           post_num,
-      area_id:            area_id,
-      municipalities:     municipalities,
-      address:            address,
-      builing_name:       builing_name,
-      phone_num:          phone_num
+      buyer_history_id: buyer_history.id,
+      post_num: post_num,
+      area_id: area_id,
+      municipalities: municipalities,
+      address: address,
+      builing_name: builing_name,
+      phone_num: phone_num
     )
   end
 end

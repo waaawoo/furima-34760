@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :exists_check, only: %i[edit update show destroy]
   before_action :set_item, only: %i[edit update show destroy]
   before_action :user_check, only: %i[edit update destroy]
-  before_action :item_check, only: [:edit, :update, :destroy]
+  before_action :item_check, only: %i[edit update destroy]
 
   def index
     @items = Item.order(created_at: :DESC)
@@ -69,8 +69,6 @@ class ItemsController < ApplicationController
 
   # 販売済みNG
   def item_check
-    unless @item.buyer_historys.blank?
-      redirect_to root_path
-    end
+    redirect_to root_path unless @item.buyer_historys.blank?
   end
 end

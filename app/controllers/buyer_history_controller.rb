@@ -3,7 +3,6 @@ class BuyerHistoryController < ApplicationController
   before_action :set_item, only: %i[index]
   before_action :user_check, only: [:index]
 
-
   def index
     @buyer_history_info = BuyerHistoryInfo.new
   end
@@ -18,7 +17,6 @@ class BuyerHistoryController < ApplicationController
       render :index
     end
   end
-
 
   private
 
@@ -38,11 +36,11 @@ class BuyerHistoryController < ApplicationController
       user_id: current_user.id,
       item_id: set_item.id,
       token: params[:token]
-      )
+    )
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: @buyer_history_info.token,
@@ -54,9 +52,6 @@ class BuyerHistoryController < ApplicationController
     # 出品者NG
     redirect_to root_path if @item.user_id == current_user.id
     # 販売済みNG
-    unless @item.buyer_historys.blank?
-      redirect_to root_path
-    end
-
+    redirect_to root_path unless @item.buyer_historys.blank?
   end
 end
