@@ -1,7 +1,7 @@
 class BuyerHistoryController < ApplicationController
   before_action :authenticate_user!, only: %i[index]
-  before_action :set_item, only: %i[index]
-  before_action :user_check, only: [:index, :create]
+  before_action :set_item, only: %i[index create]
+  before_action :user_check, only: [:index]
 
   def index
     @buyer_history_info = BuyerHistoryInfo.new
@@ -34,7 +34,7 @@ class BuyerHistoryController < ApplicationController
       :phone_num
     ).merge(
       user_id: current_user.id,
-      item_id: set_item.id,
+      item_id: @item.id,
       token: params[:token]
     )
   end
