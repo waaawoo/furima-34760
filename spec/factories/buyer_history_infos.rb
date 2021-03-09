@@ -7,9 +7,5 @@ FactoryBot.define do
     builing_name      { '建物データ' }
     phone_num         { '12345678910' }
     token             { 'token' }
-
-    # アソシエーション
-    association :user
-    association :item
   end
 end
