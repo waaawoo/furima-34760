@@ -1,7 +1,7 @@
 class BuyerHistoryController < ApplicationController
   before_action :authenticate_user!, only: %i[index]
   before_action :set_item, only: %i[index]
-  before_action :user_check, only: [:index]
+  before_action :user_check, only: [:index, :create]
 
   def index
     @buyer_history_info = BuyerHistoryInfo.new

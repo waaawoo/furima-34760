@@ -52,7 +52,7 @@ RSpec.describe BuyerHistoryInfo, type: :model do
         expect(@buyItem.errors.full_messages).to include('Post num is invalid')
       end
       it '都道府県のIDが１だと登録できない' do
-        @buyItem.area_id = '1'
+        @buyItem.area_id = 1
         @buyItem.valid?
         expect(@buyItem.errors.full_messages).to include('Area must be other than 1')
       end
