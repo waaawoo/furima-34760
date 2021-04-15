@@ -22,6 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+# BASIC認証
+ USER/PASS = "34760"
 # テーブル設計
 
 ## usersテーブル
